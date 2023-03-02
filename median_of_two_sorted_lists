@@ -1,0 +1,11 @@
+!#/usr/bin/env python3
+
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        new = nums1 + nums2
+        new.sort()
+        length = len(new)
+        if length % 2 != 0:
+            return new[length // 2]
+        else:
+            return 0.5*(new[length // 2 -1] + new[length // 2]) 
