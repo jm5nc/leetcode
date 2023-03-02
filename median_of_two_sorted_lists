@@ -9,3 +9,7 @@ class Solution:
             return new[length // 2]
         else:
             return 0.5*(new[length // 2 -1] + new[length // 2]) 
+            
+            
+# Runtime 87 ms Beats 92.86% 
+# Memory 14 MB Beats 94.72%
