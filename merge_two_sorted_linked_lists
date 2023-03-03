@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+
+        result = ListNode()
+        pointer = result
+
+        while list1 or list2:
+            v1 = list1.val if list1 else None
+            v2 = list2.val if list2 else None
+
+            if v1 == None: 
+                num = v2
+                list2 = list2.next
+            elif v2 == None:
+                num = v1
+                list1 = list1.next
+            else:
+                if v1 < v2: 
+                    num = v1
+                    list1 = list1.next
+                else:
+                    num = v2
+                    list2 = list2.next
+            pointer.next = ListNode(num)
+            pointer = pointer.next
+
+        return result.next
+        
+
+
+# Runtime 33 ms Beats 91.69%
