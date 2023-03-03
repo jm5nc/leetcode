@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+from collections import OrderedDict
+
+class Solution:
+    def compress(self, chars: List[str]) -> int:
+        s = ""
+        od = OrderedDict()
+        for i in range(len(chars)):
+            od[chars[i]] = od.get(chars[i], 0) + 1
+        for k, v in od.items():
+            if v >= 10:
+                for each in str(v):
+                    s += k + each
+            elif v == 1:
+                s += k
+            else:
+                s += k + str(v)
+        chars = [*s]
+        # new = [*s] 
+        # chars = new + chars[len(new)-1:] 
+        print(s)
+        print(chars)
+        return len(chars)
+
+
+
+
