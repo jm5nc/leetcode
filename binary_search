@@ -1,0 +1,11 @@
+#!usr/bin/env python3
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        
+        found = -1
+        if target in nums:
+            found = nums.index(target)
+        return found
+
+# Runtime 246 ms Beats 69.18%
