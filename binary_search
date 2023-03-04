@@ -11,13 +11,26 @@ class Solution:
 """
 # Runtime 246 ms Beats 69.18%
 
+"""
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         
         found = nums.index(target) if target in nums else -1
         return found
-  
+"""  
 # Runtime 241 ms Beats 82.42%
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        mid = len(nums)//2
+        if target < nums[mid]:
+            found = nums[:mid].index(target) if target in nums[:mid] else -1
+        elif target >= nums[mid]:
+            found = mid + nums[mid:].index(target) if target in nums[mid:] else -1
+
+        return found
+        
+# Runtime 239 ms Beats 87%
 
 
 
