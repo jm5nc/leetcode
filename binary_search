@@ -1,5 +1,6 @@
 #!usr/bin/env python3
 
+"""
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         
@@ -7,5 +8,16 @@ class Solution:
         if target in nums:
             found = nums.index(target)
         return found
-
+"""
 # Runtime 246 ms Beats 69.18%
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        
+        found = nums.index(target) if target in nums else -1
+        return found
+  
+# Runtime 241 ms Beats 82.42%
+
+
+
