@@ -1,0 +1,25 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+
+    # Given a string s, find the length of the longest substring without repeating characters.  
+
+    # use sliding window, O(n) time complexity
+
+        d = {}
+        counter = 0
+        best = 0
+        idx = 0
+        last = 0
+        while idx < len(s):
+            if s[idx] not in d or d[s[idx]] < last:
+                counter += 1
+            else:
+                if counter > best:
+                    best = counter
+                counter = idx - d[s[idx]] 
+            d[s[idx]] = idx
+            idx += 1
+            if idx == len(s):
+                if counter > best:
+                    best = counter
+        return best
