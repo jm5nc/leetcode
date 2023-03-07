@@ -3,34 +3,30 @@
 class Solution:
     def minimumTime(self, time: List[int], totalTrips: int) -> int:
 
-        while True:
+        # init given time boundaries
+        l, r = min(time), min(time) * totalTrips 
 
-            if len(time) == 1:
-                return time[0]
-
-            left = min(time)  # min time
-            right = min(time) * totalTrips  # max time
-            given_time = (right + left) // 2   # mid point
-
+        def given_time(left, right):
+            return (left + right) // 2  # midpoint
+        
+        def enoughTime(given_time):
             trips = 0
-            possible = []
-            impossible = []
-
             for bus in time:
                 trips += given_time // bus
-
-            if trips >= totalTrips:
-                if trips - 1 in impossible:
-                    return trips
-                possible = trips
-                right = given_time 
-                trips = 0
+            return trips >= totalTrips # True if enough time
+                
+        # binary search. finished when l,r converge
+        while l < r:
+            mid = given_time(l,r)
+            if enoughTime(mid):
+                r = mid
             else:
-                if trips + 1 in possible:
-                    return trips + 1
-                impossible = trips
-                left = given_time + 1
-                trips = 0
+                l = mid +1
+        return l
+        
+
+
+        
         
 
 
