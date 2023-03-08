@@ -9,5 +9,7 @@ class Solution:
         return sorted(nums)
         """
 
-        return sorted(x**2 for x in nums)
+        # return sorted(x**2 for x in nums)
+    
+        return sorted(x**2 for x in nums) #shaved off couple ms
         
