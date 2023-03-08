@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def twoOutOfThree(self, nums1: List[int], nums2: List[int], nums3: List[int]) -> List[int]:
+        n1 = set(nums1)
+        n2 = set(nums2)
+        n3 = set(nums3)
+        new = []
+        d = {}
+        for n in n1:
+            d[n] = 1
+        for n in n2:
+            if n in d:
+                d[n] += 1
+            else:
+               d[n] = 1 
+        for n in n3:
+            if n in d:
+                d[n] += 1
+
+        for k,v in d.items():
+            if v > 1:
+                new.append(k)
+
+        return new
