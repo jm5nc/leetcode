@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def filterRestaurants(self, restaurants: List[List[int]], veganFriendly: int, maxPrice: int, maxDistance: int) -> List[int]:
+        #restaurant [id, rating, vf, price, dist]
+
+        filtered = []
+        for r in restaurants:
+            if (veganFriendly == 1 and r[2] == 1) or (veganFriendly == 0) :
+                if r[3] <= maxPrice:
+                    if r[4] <= maxDistance:
+                        filtered.append((r[1],r[0]))
+        order = sorted(filtered, key=lambda e: (e[0], e[1]), reverse=True)
+        ans = list(map(int,(y for x,y in order)))
+        return ans
