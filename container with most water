@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+
+        """ TLE at tc 50 / 61
+        best = 0
+        for i in range(len(height)):
+            for j in range(i + 1, len(height)):
+                area = min(height[i], height[j]) * (j - i)
+                if area > best:
+                    best = area
+        return best
+        """
+
+        best = 0 # max area
+        p1 = 0
+        p2 = len(height) -1
+        while p1 < p2:
+            area = min(height[p1], height[p2]) * (p2 - p1)
+            #print('p1:',p1,'p2',p2)
+            #print('area', area)    ## [2,3,4,5,18,17,6]
+            if area > best:
+                best = area
+                #print('best updated to:',best)
+            # move shorter pointer
+            if height[p1] < height[p2]:
+                p1 += 1
+            else:
+                p2 -= 1
+        return best
