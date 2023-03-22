@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+
+        neg = (dividend < 0) != (divisor < 0)
+
+        abs_dividend = abs(dividend)
+        abs_divisor  = abs(divisor)
+
+        quotient = 0
+        total = 0
+        cur_divisor = abs_divisor
+        qt_plus = 1
+
+        while abs_dividend - total >= cur_divisor:
+            quotient += qt_plus
+            total += cur_divisor
+
+            qt_plus += qt_plus
+            cur_divisor += cur_divisor # doubling the counting speed
+
+            if abs_dividend - total < cur_divisor:
+                qt_plus = 1
+                cur_divisor = abs_divisor # reset once cur_divisor too high 
+            
+        return max(-quotient, -2**31) if neg else min(quotient, 2**31 -1)
+        
+
+
