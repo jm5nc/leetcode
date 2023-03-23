@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+
+from collections import defaultdict
+
+class Solution:
+    def makeConnected(self, n: int, connections: List[List[int]]) -> int:
+
+        # check if we have sufficient cables
+        if len(connections) < n - 1: return -1
+
+        # create adjacency list
+        adj = defaultdict(list)
+        for a, b in connections:
+            adj[a].append(b)
+            adj[b].append(a)  
+        
+        # perform DFS to find number of components
+        visited = set()
+        components = 0 # c-1 operations req to solve this problem 
+        
+        def dfs(root):
+            visited.add(root)
+            for j in adj[root]:# traverse each neighbor vertex of root, visit in one go and add to visited
+                if j not in visited:
+                    dfs(j)
+                
+        for i in range(n): # running loop to track how many vertex we can visit through i 
+            if i not in visited:
+                components += 1 # as this is not visited so will be start of new separate component .
+                dfs(i)
+
+        return components - 1 # to connect n separate components we require min n-1 cables .
+        
+ 
