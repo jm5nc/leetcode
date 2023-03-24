@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+
+        b = []
+        for ch in s:
+            if ch in "({[":
+                b.append(ch)
+            elif ch == ")":
+                if len(b) > 0 and b[-1] == "(":
+                    b.pop()
+                else: return False
+            elif ch == "]":
+                if len(b) > 0 and b[-1] == "[":
+                    b.pop()
+                else: return False
+            elif ch == "}":
+                if len(b) > 0 and b[-1] == "{":
+                    b.pop()
+                else: return False
+        if len(b) > 0: return False
+        return True
