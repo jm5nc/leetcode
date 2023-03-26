@@ -1,0 +1,18 @@
+#!/usr/bin/env python3  ## beats 98.6%
+
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+
+        ls = s.split()
+        if len(ls) != len(pattern): return False
+        hashmap = {}
+        seen = set()
+        for i in range(len(pattern)):
+            if pattern[i] not in hashmap:
+                if ls[i] in seen: return False
+                hashmap[pattern[i]] = ls[i]
+                seen.add(ls[i])
+            else:
+                if hashmap[pattern[i]] != ls[i]:
+                    return False
+        return True
