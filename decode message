@@ -1,0 +1,19 @@
+class Solution:
+    def decodeMessage(self, key: str, message: str) -> str:
+
+        abc = [*"abcdefghijklmnopqrstuvwxyz"]
+        code = []
+        while len(code) < 26:
+            for ch in key:
+                if ch not in code and ch in abc:
+                    code.append(ch)
+        #print(abc, code)
+        decoded = ""
+        for ch in message:
+            if ch == " ":
+                decoded += " "
+            elif ch in code:
+                idx = code.index(ch)
+                decoded += abc[idx]
+
+        return decoded
