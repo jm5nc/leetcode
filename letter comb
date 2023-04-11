@@ -1,0 +1,31 @@
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+
+        if len(digits) < 1: return []
+
+        combi = [""]
+        i = 0
+
+        while i < len(digits):
+            tmp = []
+            for c in combi:
+                if digits[i] == "2":
+                    tmp += [c + "a", c + "b", c + "c"]
+                elif digits[i] == "3":
+                    tmp += [c + "d", c + "e", c + "f"]
+                elif digits[i] == "4":
+                    tmp += [c + "g", c + "h", c + "i"]
+                elif digits[i] == "5":
+                    tmp += [c + "j", c + "k", c + "l"]
+                elif digits[i] == "6":
+                    tmp += [c + "m", c + "n", c + "o"]
+                elif digits[i] == "7":
+                    tmp += [c + "p", c + "q", c + "r", c + "s"]
+                elif digits[i] == "8":
+                    tmp += [c + "t", c + "u", c + "v"]
+                elif digits[i] == "9":
+                    tmp += [c + "w", c + "x", c + "y", c + "z"]
+                else: print('check me')
+            combi = tmp
+            i += 1
+        return combi
