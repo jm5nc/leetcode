@@ -1,0 +1,10 @@
+class Solution:
+    def removeStars(self, s: str) -> str:
+        
+        p1 = 0
+        while p1 < len(s):
+            if s[p1]=="*":
+                s = s[:p1-1] + s[p1+1:]
+                p1 -= 2
+            p1+= 1
+        return s
