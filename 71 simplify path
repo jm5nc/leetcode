@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+
+        dirs = path.split("/")
+        for i in range(len(dirs)):
+            if i > 1 and dirs[i] == "..":
+                dirs[i] = ""
+                parent = 1
+                flag = "go"
+                while i-parent >= 0 and flag == "go":
+                    if len(dirs[i - parent]) > 0 and dirs[i - parent] != ".": 
+                        dirs[i - parent] = ""
+                        flag = "stop"
+                    else:
+                        parent += 1
+        print(dirs)
+        canon = "/"
+        for d in dirs:
+            if len(d) > 0 and d != "." and d != "..":
+                canon += d
+                canon += "/"
+        if len(canon) > 1:
+            canon = canon[:-1]
+        return canon
