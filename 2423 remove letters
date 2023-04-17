@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def equalFrequency(self, word: str) -> bool:
+
+        letters = [*word]
+        uniq = set(letters)
+        letters.sort()
+        if letters[0] == letters[-1]: return True
+        if len(letters) == len(uniq): return True
+        #if (len(letters)-1) % len(uniq) == 0: return True
+        
+        counts = collections.Counter(letters)
+        print(counts)
+        dif_counts = []
+        for c in counts:
+            if counts[c] not in dif_counts:
+                dif_counts.append(counts[c])
+        dif_counts.sort()
+        if dif_counts[0] == 1 and len(dif_counts) == 2:
+            if (len(letters)-1) % (len(uniq)-1) == 0: return True
+        if (len(letters)-1) % len(uniq) == 0 and len(dif_counts) == 2 and dif_counts[0] +1 == dif_counts[1]: return True
+
+        return False
+
+        #oh yeah, can see why this has acceptance rate of 12%.
+        #eventually covered all test cases and code beats 98.5% of other submissions on runtime
+        
