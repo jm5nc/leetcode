@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def rowAndMaximumOnes(self, mat: List[List[int]]) -> List[int]:
+
+        #rows = len(mat)
+        mostOnes = 0
+        rowNum = 0
+
+        for i in range(len(mat)):
+            ones = mat[i].count(1)
+            if ones > mostOnes: 
+                mostOnes = ones
+                rowNum = i
+        
+        return [rowNum, mostOnes]
