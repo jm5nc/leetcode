@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def maxDivScore(self, nums: List[int], divisors: List[int]) -> int:
+
+        maxD, div = 0, min(divisors)
+        for d in divisors:
+            count = 0
+            for num in nums: 
+                if num % d == 0: count += 1
+            if count > maxD: maxD, div = count, d
+            elif count == maxD: div = min(d, div)
+        return div
