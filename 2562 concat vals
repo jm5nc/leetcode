@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def findTheArrayConcVal(self, nums: List[int]) -> int:
+
+        vals = []
+        while len(nums) > 0:
+            if len(nums) == 1:
+                val = nums.pop(0)
+            else:
+                val2 = nums.pop()
+                val1 = nums.pop(0)
+                val = int(str(val1) + str(val2))
+            vals.append(val)
+        return sum(vals)
