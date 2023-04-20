@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+
+
+class Solution:
+    def maximumCount(self, nums: List[int]) -> int:
+
+        l,r = 0, len(nums)
+        lastpos = None # added this to catch an optimised right start point for 2nd bin search, so we only search between last neg value and last seen pos value. Doesn't seem to make much difference on leetcode but i'm sure it could be useful if someone adds a test case almost entirely filled with zeros for example.
+        while l < r:
+            m = (l+r)//2
+            if nums[m] >= 0:
+                if nums[m] > 0:
+                    lastpos = m
+                r = m
+            else: l = m + 1
+        negs = l 
+
+        r = len(nums)
+        if lastpos: r = lastpos
+        while l < r:
+            m = (l+r)//2
+            if nums[m] <= 0:
+                l = m + 1
+            else: r = m
+        pos = len(nums) - l 
+
+        return max(negs, pos)
