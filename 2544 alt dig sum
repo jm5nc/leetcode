@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def alternateDigitSum(self, n: int) -> int:
+
+        idx = 0 # positive for evens
+        tot = 0
+        for dg in str(n):
+            if idx % 2 == 0:
+                tot += int(dg)
+            else: tot -= int(dg)
+            idx += 1
+        return tot
