@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def mostFrequentEven(self, nums: List[int]) -> int:
+
+        d = {}
+        for num in nums:
+            if num == 0 or num % 2 == 0:
+                if num not in d: d[num] = 1
+                else: d[num] += 1
+        bestScore, bestNum = 0, 10**5 +1
+        for k,v in d.items():
+            if v == bestScore and k < bestNum: bestNum = k
+            elif v > bestScore: 
+                bestNum = k
+                bestScore = v
+        if bestNum == 10**5 +1: return -1
+        return bestNum
+        
+
+
