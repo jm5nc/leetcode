@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def countKDifference(self, nums: List[int], k: int) -> int:
+
+        d = {}
+        pairs = 0
+
+        for num in nums:
+            target1 = num - k
+            if target1 in d:
+                pairs += d[target1]
+            target2 = num + k
+            if target2 in d:
+                pairs += d[target2]
+
+            if num not in d:
+                d[num] = 1
+            else: 
+                d[num] += 1
+        return pairs
+
+        
+            
