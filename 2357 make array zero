@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def minimumOperations(self, nums: List[int]) -> int:
+
+        uniq = []
+        for num in nums: 
+            if num not in uniq: uniq.append(num)
+        if 0 in uniq: uniq.remove(0)
+        steps = 0
+
+        while len(uniq) > 0:
+            steps += 1
+            minVal = min(uniq)
+            for i in range(len(uniq)):
+                val = uniq[i]
+                val -= minVal
+                uniq[i] = val
+            if 0 in uniq: uniq.remove(0)
+            print(uniq)
+        
+        return steps
