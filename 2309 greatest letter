@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def greatestLetter(self, s: str) -> str:
+
+        abc = "abcdefghijklmnopqrstuvwxyz"
+        
+        d = {}
+        for ch in s:
+            if ch not in d: d[ch] = 1
+        for l in abc[::-1]:
+            if l in d and l.upper() in d:
+                return l.upper()
+        return ""
