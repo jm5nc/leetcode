@@ -1,0 +1,8 @@
+class Solution:
+    def squareIsWhite(self, coordinates: str) -> bool:
+
+        c = coordinates
+        #print(c[0] in "aceg", int(c[1]) % 2 != 0)
+        if c[0] in "aceg" and int(c[1]) % 2 != 0: return False
+        if c[0] not in "aceg" and int(c[1]) % 2 == 0: return False
+        return True
