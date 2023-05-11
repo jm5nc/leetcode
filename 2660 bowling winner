@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def isWinner(self, player1: List[int], player2: List[int]) -> int:
+
+        p1_2back, p1_1back = 0, 0
+        p2_2back, p2_1back = 0, 0
+        p1_score, p2_score = 0, 0
+
+        for i in range(len(player1)):
+            if p1_2back == 10 or p1_1back == 10:
+                p1_score += 2 * player1[i]
+            else: p1_score += player1[i]
+            p1_2back, p1_1back = p1_1back, player1[i]
+            if p2_2back == 10 or p2_1back == 10:
+                p2_score += 2 * player2[i]
+            else: p2_score += player2[i]
+            p2_2back, p2_1back = p2_1back, player2[i]
+        
+        if p1_score > p2_score: return 1
+        if p1_score < p2_score: return 2
+        return 0
