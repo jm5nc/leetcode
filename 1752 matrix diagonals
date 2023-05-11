@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def diagonalSum(self, mat: List[List[int]]) -> int:
+
+        lr, rl = 0, 0 
+        for i in range(len(mat)):
+            lr += mat[i][i]
+            rl += mat[i][-1-i]
+            #print(lr, rl)
+        if len(mat) % 2 != 0: #remove centre if mat= odd x odd
+            mid = len(mat)//2
+            rl -= mat[mid][mid]
+        return lr + rl
