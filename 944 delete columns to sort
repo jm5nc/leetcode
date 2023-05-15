@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def minDeletionSize(self, strs: List[str]) -> int:
+
+        ans = 0
+        for col in range(len(strs[0])):
+            cur = "a"
+            flag = 0
+            for str in strs:
+                if str[col] < cur: flag = 1
+                cur = str[col]
+            if flag == 1: ans += 1
+        return ans
