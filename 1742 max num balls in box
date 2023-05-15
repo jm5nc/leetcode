@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def countBalls(self, lowLimit: int, highLimit: int) -> int:
+
+        l,h = lowLimit, highLimit
+        boxes = []
+
+        for i in range(l, h+1):
+            dig = str(i)
+            digSum = 0
+            for ch in dig: digSum += int(ch)
+            boxes.append(digSum)
+
+        c = collections.Counter(boxes)
+        most = 0
+        for k,v in c.items():
+            if v > most: most = v
+        
+        return most
