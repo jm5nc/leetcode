@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def isSumEqual(self, firstWord: str, secondWord: str, targetWord: str) -> bool:
+
+        abc = "abcdefghijklmnopqrstuvwxyz"
+
+        first, second, target = "", "", ""
+        for i in range(len(firstWord)):
+            first += str(abc.index(firstWord[i]))
+        for i in range(len(secondWord)):
+            second += str(abc.index(secondWord[i]))
+        for i in range(len(targetWord)):
+            target += str(abc.index(targetWord[i]))
+        
+        return int(target) == int(first) + int(second)
