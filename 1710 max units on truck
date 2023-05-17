@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
+
+        ans = 0
+        space = truckSize
+        boxTypes = sorted(boxTypes, key=lambda x:x[1], reverse=True)
+        #print(boxTypes)
+        for i in range(len(boxTypes)):
+            if space >= boxTypes[i][0]:
+                units = boxTypes[i][0] * boxTypes[i][1]
+                space -= boxTypes[i][0]
+                ans += units
+            else: 
+                units = space * boxTypes[i][1]
+                ans += units
+                break
+        return ans
