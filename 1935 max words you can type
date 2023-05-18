@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def canBeTypedWords(self, text: str, brokenLetters: str) -> int:
+
+        cnt = 0
+        for word in text.split():
+            flag = 1
+            for ch in word:
+                if ch in brokenLetters:
+                    flag = 0
+            if flag == 1: cnt += 1
+        return cnt
