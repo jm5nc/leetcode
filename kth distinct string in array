@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def kthDistinct(self, arr: List[str], k: int) -> str:
+
+        c = collections.Counter(arr)
+        distinct = 0
+        for key, v in c.items():
+            if v == 1: 
+                distinct += 1
+                if distinct == k: return key
+        return ""
